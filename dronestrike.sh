@@ -65,7 +65,6 @@ log_error(){
 main(){
   log_debug "Creating ${TMP_DIR}"
   log_info "Initiating DroneStrike on ${GREEN}$TARGET${RESET}" 
-  log_info "${SYMBOL_ACTION} Nmap: ${NMAP_TYPE}" 
 }
 
 preflight(){
