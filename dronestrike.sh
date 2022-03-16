@@ -34,6 +34,12 @@ LOGGER_PREFIX_ERROR="${BOLD}${RED}[!]${RESET}"
 
 SYMBOL_ACTION="${BOLD}${RED}>${RESET}"
 
+NMAP_OUTPUT_OPTS="output opts"
+NMAP_STD_OPTS_TCP="standard tcp opts"
+NMAP_A_OPTS_TCP="aggressive tcp opts"
+NMAP_STD_OPTS_UDP="standard udp opts"
+NMAP_A_OPTS_UDP="aggressive udp opts"
+
 log(){
   echo "$(date +$LOGGER_DATE_FORMAT) $1"
 }
@@ -64,7 +70,16 @@ log_error(){
 
 main(){
   log_debug "Creating ${TMP_DIR}"
-  log_info "Initiating DroneStrike on ${GREEN}$TARGET${RESET}" 
+  log_info  "${BOLD}${GREEN}(${RESET} Welcome to ${RED}DroneStrike${RESET}${BOLD} ${GREEN})${RESET}" 
+  log_info  "${BOLD}${YELLOW}GENERATING OP ORDER${RESET}"
+  log_info  "  ${RED}TARGET(s)${RESET}: ${GREEN}${TARGET}${RESET}"
+  log_info  "  ${RED}NMAP${RESET}"
+  log_info  "    ${BOLD}Loadout(TCP):${RESET}"
+  log_info  "     ${RED}*${RESET} Standard:   nmap ${NMAP_STD_OPTS_TCP} ${NMAP_OUTPUT_OPTS} ${TARGET}"
+  log_info  "     ${RED}*${RESET} Aggressive: nmap ${NMAP_A_OPTS_TCP}   ${NMAP_OUTPUT_OPTS} ${TARGET}"
+  log_info  "    ${BOLD}Loadout(UDP):${RESET}"
+  log_info  "     ${RED}*${RESET} Standard:   nmap ${NMAP_STD_OPTS_UDP} ${NMAP_OUTPUT_OPTS} ${TARGET}"
+  log_info  "     ${RED}*${RESET} Aggressive: nmap ${NMAP_A_OPTS_UDP} ${NMAP_OUTPUT_OPTS} ${TARGET}"
 }
 
 preflight(){
@@ -78,6 +93,26 @@ usr_bin_check(){
       exit 1
     fi
   done
+}
+
+generate_op_order(){
+  true
+}
+
+approve_op_order(){
+  true
+}
+
+execute_op_order(){
+  true
+}
+
+convert_nmap_xml_to_html(){
+  true
+}
+
+open_nmap_html(){
+  true
 }
 
 preflight
